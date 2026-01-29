@@ -6,61 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tourism in Saudi Arabia</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
-        }
-        /* Slider Styles */
-        
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-        }
-        
-        .slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 1s ease;
-        }
-        
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-            text-align: center;
-        }
-        
-        .slide-overlay h2 {
-            font-size: 3rem;
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .slide-overlay p {
-            max-width: 700px;
-            color: #ffffffcc;
-            font-size: 1.2rem;
-            line-height: 1.6;
         }
         /* Zoom transition on cards */
         
@@ -82,13 +31,27 @@
             object-fit: cover;
             object-position: bottom;
         }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body class="bg-[#3b2f2f] text-white">
 
     <!-- Header -->
-    <header class="bg-gradient-to-r from-[#8b6b2e] to-[#c9a24d] shadow-lg z-50 relative">
+    <header class="bg-gradient-to-r from-[#8b6b2e] to-[#c9a24d] shadow-lg">
         <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
             <h1 class="text-2xl font-bold">🌴 Saudi Arabia Tourism</h1>
             <nav class="space-x-6">
@@ -100,85 +63,80 @@
         </div>
     </header>
 
-    <!-- Hero Slider Section -->
-    <section id="home" class="slider">
-        <div class="slides">
-            <div class="slide" style="background-image:url('https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5adf77af6eabcc00190b75b6/65f8ed39cf79c40002c5fb87/files/best-places-to-visit-in-saudi-arabia-main-image-hd-op.jpg')">
-                <div class="slide-overlay">
-                    <h2>Discover the Beauty of Saudi Arabia</h2>
-                    <p>Explore timeless culture, modern cities, deserts, mountains, and extraordinary journeys across the Kingdom.</p>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url('https://www.arabnews.com/sites/default/files/styles/n_670_395/public/2019/05/24/1596296-2059912705.jpg')">
-                <div class="slide-overlay">
-                    <h2>Experience AlUla & Ancient Civilizations</h2>
-                    <p>Visit dramatic rock formations, historic sites, and natural landscapes that tell the story of Saudi Arabia.</p>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url('https://media.cntraveller.com/photos/611bedceabe0ca68331f96a7/1%3A1/w_1440%2Ch_1440%2Cc_limit/hero-sa-rs.jpg')">
-                <div class="slide-overlay">
-                    <h2>Relax in Beautiful Coastal Cities</h2>
-                    <p>Discover Jeddah's historic districts, Red Sea beaches, and vibrant city life.</p>
-                </div>
+    <!-- Hero Section -->
+    <!-- Hero Slider -->
+    <section id="home" class="relative h-[70vh] overflow-hidden">
+        <div id="slider" class="h-full w-full relative">
+            <img src="images/Aloula.jpg" class="slide active" />
+            <img src="images/taif.jpg" class="slide" />
+            <img src="images/Tabuk.jpg" class="slide" />
+            <img src="images/madina.jpg" class="slide" />
+            <img src="images/jeddah.jpg" class="slide" />
+
+        </div>
+        <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center">
+            <div>
+                <h2 class="text-4xl font-bold text-[#d4af37] mb-4">Discover the Beauty of Saudi Arabia</h2>
+                <p class="max-w-2xl mx-auto text-lg">A unique journey through golden deserts and breathtaking landscapes</p>
             </div>
         </div>
     </section>
 
-    <!-- Places Section -->
+    <!-- Places -->
+    <!-- Places -->
     <section id="places" class="py-16 max-w-7xl mx-auto px-6">
-        <h3 class="text-3xl font-bold text-center text-[#d4af37] mb-10">Top Tourist Cities in Saudi Arabia</h3>
         <div class="grid md:grid-cols-3 gap-8">
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="Aloula.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/Aloula.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">AlUla</h4>
                     <p>An open-air museum with ancient rock formations and rich history.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="Tabuk.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/Tabuk.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">Tabuk</h4>
                     <p>Known for its mountains, valleys, and stunning northern landscapes.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="jeddah.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/jeddah.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">Jeddah</h4>
                     <p>The Bride of the Red Sea with beautiful beaches and historic districts.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="riyad.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/riyad.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">Riyadh</h4>
                     <p>The capital city blending modern architecture with cultural heritage.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="asir.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/asir.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">Asir</h4>
                     <p>Famous for its green mountains, cool weather, and traditional villages.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden zoom-card">
-                <img src="madina.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden">
+                <img src="images/madina.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5">
                     <h4 class="text-xl font-bold mb-2">Madinah</h4>
                     <p>A spiritual city with deep Islamic history and peaceful atmosphere.</p>
                 </div>
             </div>
 
-            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden md:col-span-3 md:max-w-md md:mx-auto zoom-card">
-                <img src="taif.jpg" class="h-56 w-full object-cover object-bottom" />
+            <div class="bg-[#4a362a] rounded-2xl shadow-lg overflow-hidden md:col-span-3 md:max-w-md md:mx-auto">
+                <img src="images/taif.jpg" class="h-56 w-full object-cover object-bottom" />
                 <div class="p-5 text-center">
                     <h4 class="text-xl font-bold mb-2">Taif</h4>
                     <p>A beautiful mountain city known for roses, mild climate, and resorts.</p>
@@ -188,17 +146,15 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="bg-[#2b1f1a] py-16 px-6">
         <div class="max-w-5xl mx-auto text-center">
             <h3 class="text-3xl font-bold text-[#d4af37] mb-6">About Tourism in Saudi Arabia</h3>
-            <p class="text-lg leading-loose text-white/90">
-                Saudi Arabia offers a rich blend of history, culture, deserts, mountains, and coastlines. With Vision 2030, the Kingdom is becoming one of the world’s most exciting and fast-growing tourism destinations.
-            </p>
+            <p class="text-lg leading-loose">Saudi Arabia offers a rich blend of history, culture, deserts, mountains, and coastlines. With Vision 2030, the Kingdom is becoming one of the world’s most exciting and fast-growing tourism destinations.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-16 max-w-5xl mx-auto px-6">
         <h3 class="text-3xl font-bold text-center text-[#d4af37] mb-8">Contact Us</h3>
         <form id="contactForm" class="bg-[#4a362a] p-8 rounded-2xl shadow-lg space-y-4">
@@ -212,38 +168,51 @@
     <!-- Footer -->
     <footer class="bg-[#1f1511] text-center py-6 text-sm">
         © 2026 Saudi Arabia Tourism – Gold & Brown Theme
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="https://www.facebook.com/profile.php?id=61587091562401&rdid=sZiRny0lH4TgBZii&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16JyNg4fqL%2F#" target="_blank" class="text-[#d4af37] hover:text-white text-2xl">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/desert_rose_adventure_dmc?igsh=bHh4N21uenFmZzQ1&utm_source=qr" target="_blank" class="text-[#d4af37] hover:text-white text-2xl">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" class="text-[#d4af37] hover:text-white text-2xl">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Contact Form WhatsApp
         const form = document.getElementById('contactForm');
+
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
+
             if (!name || !email || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-            const phoneNumber = '966530356000';
+
+            const phoneNumber = '966530356000'; // replace with your WhatsApp number
             const text = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${text}`;
+
+            window.open(whatsappURL, '_blank');
             form.reset();
         });
-
-        // Slider JS
-        const slides = document.querySelector('.slides');
-        const totalSlides = document.querySelectorAll('.slide').length;
+    </script>
+    <script>
+        const slides = document.querySelectorAll('.slide');
         let index = 0;
 
-        function showNextSlide() {
-            index = (index + 1) % totalSlides;
-            slides.style.transform = `translateX(-${index * 100}%)`;
-        }
-
-        setInterval(showNextSlide, 5000); // تغير كل 5 ثواني
+        setInterval(() => {
+            slides[index].classList.remove('active');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }, 4000);
     </script>
 </body>
 
